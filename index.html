@@ -3,131 +3,207 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Schoolwork Games Collection</title>
+  <title>Games Collection</title>
+  <meta name="description" content="A curated collection of browser games">
   <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:2rem}
-    header{display:flex;align-items:center;gap:1rem}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1rem}
-    .card{padding:1rem;border:1px solid #ddd;border-radius:8px}
-    a{color:#0366d6;text-decoration:none}
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#0ea5a4;--muted:#94a3b8}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(180deg,#071028 0%,#08102a 60%);color:#e6eef8}
+    header{display:flex;align-items:center;justify-content:space-between;padding:28px 32px;border-bottom:1px solid rgba(255,255,255,0.03)}
+    .brand{display:flex;gap:16px;align-items:center}
+    .logo{width:48px;height:48px;background:linear-gradient(135deg,var(--accent),#06b6d4);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#042630}
+    h1{margin:0;font-size:20px}
+    p.lead{margin:0;color:var(--muted);font-size:13px}
+    .controls{display:flex;gap:12px;align-items:center}
+    input.search{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);padding:10px 12px;border-radius:10px;color:inherit;width:260px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;padding:28px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);padding:14px;border-radius:12px;display:flex;gap:12px;align-items:center;transition:transform .18s ease,box-shadow .18s}
+    .card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+    .thumb{width:72px;height:72px;border-radius:8px;flex-shrink:0;background:#061124;display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700;font-size:18px;overflow:hidden}
+    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .meta{flex:1}
+    .name{font-size:16px;margin:0 0 6px}
+    .meta .meta-muted{color:var(--muted);font-size:13px}
+    footer{padding:24px 32px;color:var(--muted);font-size:13px}
+    @media (max-width:560px){.controls{flex-direction:column;align-items:start}input.search{width:100%}}
   </style>
 </head>
 <body>
   <header>
-    <h1>Games Collection</h1>
-    <p>Imported from gamesite-for-me</p>
+    <div class="brand">
+      <div class="logo">G</div>
+      <div>
+        <h1>Games Collection</h1>
+        <p class="lead">Imported from gamesite-for-me — click a card to play</p>
+      </div>
+    </div>
+    <div class="controls">
+      <input id="q" class="search" placeholder="Search games..." aria-label="Search games">
+    </div>
   </header>
-  <section class="grid">
-  <div class="card"><h3><a href="g/1/">1</a></h3></div>
-  <div class="card"><h3><a href="g/1v1lol/">1v1lol</a></h3></div>
-  <div class="card"><h3><a href="g/2048/">2048</a></h3></div>
-  <div class="card"><h3>__MACOSX (no direct HTML entry)</h3></div>
-  <div class="card"><h3><a href="g/acegangster/">acegangster</a></h3></div>
-  <div class="card"><h3><a href="g/adventurecapitalist/">adventurecapitalist</a></h3></div>
-  <div class="card"><h3><a href="g/agario/">agario</a></h3></div>
-  <div class="card"><h3>airsmash (no direct HTML entry)</h3></div>
-  <div class="card"><h3><a href="g/baldisbasics/">baldisbasics</a></h3></div>
-  <div class="card"><h3><a href="g/basketball-random/">basketball-random</a></h3></div>
-  <div class="card"><h3><a href="g/basketballio/">basketballio</a></h3></div>
-  <div class="card"><h3><a href="g/basketballstars/">basketballstars</a></h3></div>
-  <div class="card"><h3><a href="g/bigshotboxing/">bigshotboxing</a></h3></div>
-  <div class="card"><h3><a href="g/bitlife/">bitlife</a></h3></div>
-  <div class="card"><h3><a href="g/blackjack/">blackjack</a></h3></div>
-  <div class="card"><h3><a href="g/blockblast/">blockblast</a></h3></div>
-  <div class="card"><h3><a href="g/boxingrandom/">boxingrandom</a></h3></div>
-  <div class="card"><h3><a href="g/btd5/">btd5</a></h3></div>
-  <div class="card"><h3><a href="g/case-clicker/">case-clicker</a></h3></div>
-  <div class="card"><h3><a href="g/checkoutfrenzy/">checkoutfrenzy</a></h3></div>
-  <div class="card"><h3><a href="g/cookieclicker/">cookieclicker</a></h3></div>
-  <div class="card"><h3><a href="g/crazytunnel3d/">crazytunnel3d</a></h3></div>
-  <div class="card"><h3><a href="g/crossyroad/">crossyroad</a></h3></div>
-  <div class="card"><h3><a href="g/cupcake2048/">cupcake2048</a></h3></div>
-  <div class="card"><h3><a href="g/cut-the-rope/">cut-the-rope</a></h3></div>
-  <div class="card"><h3><a href="g/dbz/">dbz</a></h3></div>
-  <div class="card"><h3><a href="g/deadshotio/">deadshotio</a></h3></div>
-  <div class="card"><h3><a href="g/dogeminer/">dogeminer</a></h3></div>
-  <div class="card"><h3><a href="g/doom/">doom</a></h3></div>
-  <div class="card"><h3><a href="g/doom2/">doom2</a></h3></div>
-  <div class="card"><h3><a href="g/draw-the-hill/">draw-the-hill</a></h3></div>
-  <div class="card"><h3><a href="g/driftboss/">driftboss</a></h3></div>
-  <div class="card"><h3><a href="g/drifthunters/">drifthunters</a></h3></div>
-  <div class="card"><h3><a href="g/drivemad/">drivemad</a></h3></div>
-  <div class="card"><h3><a href="g/ducklife/">ducklife</a></h3></div>
-  <div class="card"><h3><a href="g/ducklife1/">ducklife1</a></h3></div>
-  <div class="card"><h3><a href="g/ducklife2/">ducklife2</a></h3></div>
-  <div class="card"><h3><a href="g/ducklife3/">ducklife3</a></h3></div>
-  <div class="card"><h3><a href="g/ducklife4/">ducklife4</a></h3></div>
-  <div class="card"><h3><a href="g/ducklife5/">ducklife5</a></h3></div>
-  <div class="card"><h3><a href="g/ducklife6/">ducklife6</a></h3></div>
-  <div class="card"><h3><a href="g/elonmusk/">elonmusk</a></h3></div>
-  <div class="card"><h3><a href="g/fireboywatergirlforsettemple/">fireboywatergirlforsettemple</a></h3></div>
-  <div class="card"><h3><a href="g/flappy-2048/">flappy-2048</a></h3></div>
-  <div class="card"><h3><a href="g/flappy-bird/">flappy-bird</a></h3></div>
-  <div class="card"><h3><a href="g/fnaf/">fnaf</a></h3></div>
-  <div class="card"><h3><a href="g/fnaf-2/">fnaf-2</a></h3></div>
-  <div class="card"><h3><a href="g/geodash/">geodash</a></h3></div>
-  <div class="card"><h3><a href="g/geoguesser/">geoguesser</a></h3></div>
-  <div class="card"><h3><a href="g/getaway-shootout/">getaway-shootout</a></h3></div>
-  <div class="card"><h3><a href="g/googlebaseball/">googlebaseball</a></h3></div>
-  <div class="card"><h3><a href="g/googlesnake/">googlesnake</a></h3></div>
-  <div class="card"><h3><a href="g/gunmayhem/">gunmayhem</a></h3></div>
-  <div class="card"><h3><a href="g/gunmayhem2/">gunmayhem2</a></h3></div>
-  <div class="card"><h3><a href="g/gunspin/">gunspin</a></h3></div>
-  <div class="card"><h3><a href="g/henry-stickman/">henry-stickman</a></h3></div>
-  <div class="card"><h3><a href="g/hideandsmash/">hideandsmash</a></h3></div>
-  <div class="card"><h3><a href="g/holeio/">holeio</a></h3></div>
-  <div class="card"><h3><a href="g/houseofhazards/">houseofhazards</a></h3></div>
-  <div class="card"><h3><a href="g/idle-breakout/">idle-breakout</a></h3></div>
-  <div class="card"><h3><a href="g/infinitecraft/">infinitecraft</a></h3></div>
-  <div class="card"><h3><a href="g/jacksmith/">jacksmith</a></h3></div>
-  <div class="card"><h3><a href="g/jetpack-joyride/">jetpack-joyride</a></h3></div>
-  <div class="card"><h3><a href="g/justfall/">justfall</a></h3></div>
-  <div class="card"><h3><a href="g/lazyjump3d/">lazyjump3d</a></h3></div>
-  <div class="card"><h3><a href="g/learntofly/">learntofly</a></h3></div>
-  <div class="card"><h3><a href="g/mariokart64/">mariokart64</a></h3></div>
-  <div class="card"><h3><a href="g/mc/">mc</a></h3></div>
-  <div class="card"><h3><a href="g/minesweeper/">minesweeper</a></h3></div>
-  <div class="card"><h3><a href="g/monkey-mart/">monkey-mart</a></h3></div>
-  <div class="card"><h3><a href="g/motox3m/">motox3m</a></h3></div>
-  <div class="card"><h3><a href="g/movies/">movies</a></h3></div>
-  <div class="card"><h3><a href="g/mrmine/">mrmine</a></h3></div>
-  <div class="card"><h3><a href="g/new/">new</a></h3></div>
-  <div class="card"><h3><a href="g/ngon/">ngon</a></h3></div>
-  <div class="card"><h3><a href="g/obbyrobby/">obbyrobby</a></h3></div>
-  <div class="card"><h3><a href="g/ovo/">ovo</a></h3></div>
-  <div class="card"><h3><a href="g/pandemic2/">pandemic2</a></h3></div>
-  <div class="card"><h3><a href="g/papas-game/">papas-game</a></h3></div>
-  <div class="card"><h3><a href="g/paperio2/">paperio2</a></h3></div>
-  <div class="card"><h3><a href="g/pixelgun/">pixelgun</a></h3></div>
-  <div class="card"><h3><a href="g/pokemon/">pokemon</a></h3></div>
-  <div class="card"><h3>pool (no direct HTML entry)</h3></div>
-  <div class="card"><h3><a href="g/pvz/">pvz</a></h3></div>
-  <div class="card"><h3><a href="g/rb-college/">rb-college</a></h3></div>
-  <div class="card"><h3><a href="g/retro-bowl/">retro-bowl</a></h3></div>
-  <div class="card"><h3><a href="g/riddleschool/">riddleschool</a></h3></div>
-  <div class="card"><h3><a href="g/rooftopsnipers/">rooftopsnipers</a></h3></div>
-  <div class="card"><h3><a href="g/run2/">run2</a></h3></div>
-  <div class="card"><h3><a href="g/run3/">run3</a></h3></div>
-  <div class="card"><h3><a href="g/sandboxels/">sandboxels</a></h3></div>
-  <div class="card"><h3><a href="g/slope/">slope</a></h3></div>
-  <div class="card"><h3><a href="g/snowrider3d/">snowrider3d</a></h3></div>
-  <div class="card"><h3><a href="g/soccer-random/">soccer-random</a></h3></div>
-  <div class="card"><h3><a href="g/stack-bump-3d/">stack-bump-3d</a></h3></div>
-  <div class="card"><h3><a href="g/stacktris/">stacktris</a></h3></div>
-  <div class="card"><h3><a href="g/stickman-golf/">stickman-golf</a></h3></div>
-  <div class="card"><h3><a href="g/subway-surfers/">subway-surfers</a></h3></div>
-  <div class="card"><h3><a href="g/survev/">survev</a></h3></div>
-  <div class="card"><h3><a href="g/tanktrouble/">tanktrouble</a></h3></div>
-  <div class="card"><h3><a href="g/temple-run-2/">temple-run-2</a></h3></div>
-  <div class="card"><h3><a href="g/tetris/">tetris</a></h3></div>
-  <div class="card"><h3><a href="g/timeshooter/">timeshooter</a></h3></div>
-  <div class="card"><h3><a href="g/tinyfishing/">tinyfishing</a></h3></div>
-  <div class="card"><h3><a href="g/vex/">vex</a></h3></div>
-  <div class="card"><h3><a href="g/volleyrandom/">volleyrandom</a></h3></div>
-  <div class="card"><h3><a href="g/wallsmash/">wallsmash</a></h3></div>
-  <div class="card"><h3><a href="g/waterworks/">waterworks</a></h3></div>
-  <div class="card"><h3><a href="g/worlds-hardest-game/">worlds-hardest-game</a></h3></div>
-  </section>
-  <footer style="margin-top:2rem;color:#666">Auto-generated index — customize as needed.</footer>
+
+  <main>
+    <div id="grid" class="grid">
+<!-- CARDS -->
+    </div>
+  </main>
+
+  <footer>Auto-generated gallery — customize on the repository branch.</footer>
+
+  <script>
+    const grid = document.getElementById('grid');
+    const q = document.getElementById('q');
+    const games = [];
+  </script>
 </body>
 </html>
+<script>games.push({name: '1', path: 'g/1/', thumb: ''});</script>
+<script>games.push({name: '1v1lol', path: 'g/1v1lol/', thumb: ''});</script>
+<script>games.push({name: '2048', path: 'g/2048/', thumb: 'g/2048/thumb.png'});</script>
+<script>games.push({name: '__MACOSX', path: 'g/__MACOSX/', thumb: ''});</script>
+<script>games.push({name: 'acegangster', path: 'g/acegangster/', thumb: ''});</script>
+<script>games.push({name: 'adventurecapitalist', path: 'g/adventurecapitalist/', thumb: ''});</script>
+<script>games.push({name: 'agario', path: 'g/agario/', thumb: ''});</script>
+<script>games.push({name: 'airsmash', path: 'g/airsmash/', thumb: ''});</script>
+<script>games.push({name: 'baldisbasics', path: 'g/baldisbasics/', thumb: ''});</script>
+<script>games.push({name: 'basketball-random', path: 'g/basketball-random/', thumb: ''});</script>
+<script>games.push({name: 'basketballio', path: 'g/basketballio/', thumb: ''});</script>
+<script>games.push({name: 'basketballstars', path: 'g/basketballstars/', thumb: ''});</script>
+<script>games.push({name: 'bigshotboxing', path: 'g/bigshotboxing/', thumb: ''});</script>
+<script>games.push({name: 'bitlife', path: 'g/bitlife/', thumb: ''});</script>
+<script>games.push({name: 'blackjack', path: 'g/blackjack/', thumb: ''});</script>
+<script>games.push({name: 'blockblast', path: 'g/blockblast/', thumb: ''});</script>
+<script>games.push({name: 'boxingrandom', path: 'g/boxingrandom/', thumb: ''});</script>
+<script>games.push({name: 'btd5', path: 'g/btd5/', thumb: ''});</script>
+<script>games.push({name: 'case-clicker', path: 'g/case-clicker/', thumb: ''});</script>
+<script>games.push({name: 'checkoutfrenzy', path: 'g/checkoutfrenzy/', thumb: ''});</script>
+<script>games.push({name: 'cookieclicker', path: 'g/cookieclicker/', thumb: ''});</script>
+<script>games.push({name: 'crazytunnel3d', path: 'g/crazytunnel3d/', thumb: ''});</script>
+<script>games.push({name: 'crossyroad', path: 'g/crossyroad/', thumb: ''});</script>
+<script>games.push({name: 'cupcake2048', path: 'g/cupcake2048/', thumb: ''});</script>
+<script>games.push({name: 'cut-the-rope', path: 'g/cut-the-rope/', thumb: ''});</script>
+<script>games.push({name: 'dbz', path: 'g/dbz/', thumb: ''});</script>
+<script>games.push({name: 'deadshotio', path: 'g/deadshotio/', thumb: ''});</script>
+<script>games.push({name: 'dogeminer', path: 'g/dogeminer/', thumb: ''});</script>
+<script>games.push({name: 'doom', path: 'g/doom/', thumb: ''});</script>
+<script>games.push({name: 'doom2', path: 'g/doom2/', thumb: ''});</script>
+<script>games.push({name: 'draw-the-hill', path: 'g/draw-the-hill/', thumb: ''});</script>
+<script>games.push({name: 'driftboss', path: 'g/driftboss/', thumb: ''});</script>
+<script>games.push({name: 'drifthunters', path: 'g/drifthunters/', thumb: ''});</script>
+<script>games.push({name: 'drivemad', path: 'g/drivemad/', thumb: ''});</script>
+<script>games.push({name: 'ducklife', path: 'g/ducklife/', thumb: ''});</script>
+<script>games.push({name: 'ducklife1', path: 'g/ducklife1/', thumb: ''});</script>
+<script>games.push({name: 'ducklife2', path: 'g/ducklife2/', thumb: ''});</script>
+<script>games.push({name: 'ducklife3', path: 'g/ducklife3/', thumb: ''});</script>
+<script>games.push({name: 'ducklife4', path: 'g/ducklife4/', thumb: ''});</script>
+<script>games.push({name: 'ducklife5', path: 'g/ducklife5/', thumb: ''});</script>
+<script>games.push({name: 'ducklife6', path: 'g/ducklife6/', thumb: ''});</script>
+<script>games.push({name: 'elonmusk', path: 'g/elonmusk/', thumb: ''});</script>
+<script>games.push({name: 'fireboywatergirlforsettemple', path: 'g/fireboywatergirlforsettemple/', thumb: ''});</script>
+<script>games.push({name: 'flappy-2048', path: 'g/flappy-2048/', thumb: ''});</script>
+<script>games.push({name: 'flappy-bird', path: 'g/flappy-bird/', thumb: ''});</script>
+<script>games.push({name: 'fnaf', path: 'g/fnaf/', thumb: ''});</script>
+<script>games.push({name: 'fnaf-2', path: 'g/fnaf-2/', thumb: ''});</script>
+<script>games.push({name: 'geodash', path: 'g/geodash/', thumb: ''});</script>
+<script>games.push({name: 'geoguesser', path: 'g/geoguesser/', thumb: ''});</script>
+<script>games.push({name: 'getaway-shootout', path: 'g/getaway-shootout/', thumb: ''});</script>
+<script>games.push({name: 'googlebaseball', path: 'g/googlebaseball/', thumb: ''});</script>
+<script>games.push({name: 'googlesnake', path: 'g/googlesnake/', thumb: ''});</script>
+<script>games.push({name: 'gunmayhem', path: 'g/gunmayhem/', thumb: ''});</script>
+<script>games.push({name: 'gunmayhem2', path: 'g/gunmayhem2/', thumb: ''});</script>
+<script>games.push({name: 'gunspin', path: 'g/gunspin/', thumb: ''});</script>
+<script>games.push({name: 'henry-stickman', path: 'g/henry-stickman/', thumb: ''});</script>
+<script>games.push({name: 'hideandsmash', path: 'g/hideandsmash/', thumb: ''});</script>
+<script>games.push({name: 'holeio', path: 'g/holeio/', thumb: ''});</script>
+<script>games.push({name: 'houseofhazards', path: 'g/houseofhazards/', thumb: ''});</script>
+<script>games.push({name: 'idle-breakout', path: 'g/idle-breakout/', thumb: ''});</script>
+<script>games.push({name: 'infinitecraft', path: 'g/infinitecraft/', thumb: ''});</script>
+<script>games.push({name: 'jacksmith', path: 'g/jacksmith/', thumb: ''});</script>
+<script>games.push({name: 'jetpack-joyride', path: 'g/jetpack-joyride/', thumb: ''});</script>
+<script>games.push({name: 'justfall', path: 'g/justfall/', thumb: ''});</script>
+<script>games.push({name: 'lazyjump3d', path: 'g/lazyjump3d/', thumb: ''});</script>
+<script>games.push({name: 'learntofly', path: 'g/learntofly/', thumb: ''});</script>
+<script>games.push({name: 'mariokart64', path: 'g/mariokart64/', thumb: ''});</script>
+<script>games.push({name: 'mc', path: 'g/mc/', thumb: ''});</script>
+<script>games.push({name: 'minesweeper', path: 'g/minesweeper/', thumb: ''});</script>
+<script>games.push({name: 'monkey-mart', path: 'g/monkey-mart/', thumb: ''});</script>
+<script>games.push({name: 'motox3m', path: 'g/motox3m/', thumb: ''});</script>
+<script>games.push({name: 'movies', path: 'g/movies/', thumb: ''});</script>
+<script>games.push({name: 'mrmine', path: 'g/mrmine/', thumb: ''});</script>
+<script>games.push({name: 'new', path: 'g/new/', thumb: ''});</script>
+<script>games.push({name: 'ngon', path: 'g/ngon/', thumb: ''});</script>
+<script>games.push({name: 'obbyrobby', path: 'g/obbyrobby/', thumb: ''});</script>
+<script>games.push({name: 'ovo', path: 'g/ovo/', thumb: ''});</script>
+<script>games.push({name: 'pandemic2', path: 'g/pandemic2/', thumb: ''});</script>
+<script>games.push({name: 'papas-game', path: 'g/papas-game/', thumb: ''});</script>
+<script>games.push({name: 'paperio2', path: 'g/paperio2/', thumb: ''});</script>
+<script>games.push({name: 'pixelgun', path: 'g/pixelgun/', thumb: ''});</script>
+<script>games.push({name: 'pokemon', path: 'g/pokemon/', thumb: ''});</script>
+<script>games.push({name: 'pool', path: 'g/pool/', thumb: ''});</script>
+<script>games.push({name: 'pvz', path: 'g/pvz/', thumb: ''});</script>
+<script>games.push({name: 'rb-college', path: 'g/rb-college/', thumb: ''});</script>
+<script>games.push({name: 'retro-bowl', path: 'g/retro-bowl/', thumb: ''});</script>
+<script>games.push({name: 'riddleschool', path: 'g/riddleschool/', thumb: ''});</script>
+<script>games.push({name: 'rooftopsnipers', path: 'g/rooftopsnipers/', thumb: ''});</script>
+<script>games.push({name: 'run2', path: 'g/run2/', thumb: ''});</script>
+<script>games.push({name: 'run3', path: 'g/run3/', thumb: ''});</script>
+<script>games.push({name: 'sandboxels', path: 'g/sandboxels/', thumb: ''});</script>
+<script>games.push({name: 'slope', path: 'g/slope/', thumb: ''});</script>
+<script>games.push({name: 'snowrider3d', path: 'g/snowrider3d/', thumb: ''});</script>
+<script>games.push({name: 'soccer-random', path: 'g/soccer-random/', thumb: ''});</script>
+<script>games.push({name: 'stack-bump-3d', path: 'g/stack-bump-3d/', thumb: ''});</script>
+<script>games.push({name: 'stacktris', path: 'g/stacktris/', thumb: ''});</script>
+<script>games.push({name: 'stickman-golf', path: 'g/stickman-golf/', thumb: ''});</script>
+<script>games.push({name: 'subway-surfers', path: 'g/subway-surfers/', thumb: ''});</script>
+<script>games.push({name: 'survev', path: 'g/survev/', thumb: ''});</script>
+<script>games.push({name: 'tanktrouble', path: 'g/tanktrouble/', thumb: ''});</script>
+<script>games.push({name: 'temple-run-2', path: 'g/temple-run-2/', thumb: ''});</script>
+<script>games.push({name: 'tetris', path: 'g/tetris/', thumb: ''});</script>
+<script>games.push({name: 'timeshooter', path: 'g/timeshooter/', thumb: ''});</script>
+<script>games.push({name: 'tinyfishing', path: 'g/tinyfishing/', thumb: 'g/tinyfishing/thumb.png'});</script>
+<script>games.push({name: 'vex', path: 'g/vex/', thumb: ''});</script>
+<script>games.push({name: 'volleyrandom', path: 'g/volleyrandom/', thumb: ''});</script>
+<script>games.push({name: 'wallsmash', path: 'g/wallsmash/', thumb: ''});</script>
+<script>games.push({name: 'waterworks', path: 'g/waterworks/', thumb: ''});</script>
+<script>games.push({name: 'worlds-hardest-game', path: 'g/worlds-hardest-game/', thumb: ''});</script>
+<script>
+function render() {
+  grid.innerHTML = '';
+  const qv = (q.value || '').toLowerCase().trim();
+  for (const g of games) {
+    if (qv && g.name.toLowerCase().indexOf(qv) === -1) continue;
+    const a = document.createElement('a');
+    a.href = g.path;
+    a.className = 'card';
+
+    const t = document.createElement('div');
+    t.className = 'thumb';
+    if (g.thumb) {
+      const img = document.createElement('img');
+      img.src = g.thumb;
+      img.alt = g.name;
+      t.appendChild(img);
+    } else {
+      t.textContent = g.name.charAt(0).toUpperCase();
+    }
+
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    const name = document.createElement('h3');
+    name.className = 'name';
+    name.textContent = g.name;
+    const sub = document.createElement('div');
+    sub.className = 'meta-muted';
+    sub.textContent = 'Play now';
+    meta.appendChild(name);
+    meta.appendChild(sub);
+
+    a.appendChild(t);
+    a.appendChild(meta);
+    grid.appendChild(a);
+  }
+}
+
+q.addEventListener('input', render);
+render();
+</script>
