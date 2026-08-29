@@ -1,0 +1,38 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - import-games
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Prepare publish directory
+        run: |
+          set -e
+          rm -rf public
+          mkdir -p public
+
+          # copy index and assets
+          cp -a index.html public/ 2>/dev/null || true
+          if [ -d g ]; then
+            rsync -a g/ public/g/
+          fi
+          if [ -d static ]; then
+            rsync -a static/ public/static/
+          fi
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: public
+          keep_files: true
