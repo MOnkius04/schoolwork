@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Schoolwork Games Collection</title>
   <script src="static/Waves.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,100..900&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -29,6 +30,12 @@
       padding: 2rem;
     }
     header { display: flex; align-items: center; gap: 1rem; }
+    header h1 { 
+      font-family: 'Fraunces', serif;
+      font-variation-settings: 'wght' 400, 'wdth' 100;
+      transition: all 0.05s ease-out;
+      letter-spacing: -0.02em;
+    }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; }
     .card {
       padding: 1rem;
@@ -37,10 +44,54 @@
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
       transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 8px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(102, 126, 234, 0.4) 0%, transparent 70%);
+      box-shadow: inset 0 0 20px rgba(102, 126, 234, 0.2), 0 0 20px rgba(102, 126, 234, 0.3);
     }
     .card:hover {
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       transform: translateY(-2px);
+    }
+    .card:hover::before {
+      opacity: 1;
+    }
+    .card h3 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .fullscreen-btn {
+      display: none;
+      background: rgba(102, 126, 234, 0.8);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 0.25rem 0.5rem;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+    .card:hover .fullscreen-btn {
+      display: block;
+    }
+    .fullscreen-btn:hover {
+      background: rgba(102, 126, 234, 1);
+      transform: scale(1.05);
     }
     a { color: #0366d6; text-decoration: none; }
     footer { margin-top: 2rem; color: #666; }
@@ -51,17 +102,14 @@
   <div class="content">
     <header>
       <h1>Games Collection</h1>
-      <p>Imported from gamesite-for-me</p>
     </header>
     <section class="grid">
   <div class="card"><h3><a href="g/1/">1</a></h3></div>
   <div class="card"><h3><a href="g/1v1lol/">1v1lol</a></h3></div>
   <div class="card"><h3><a href="g/2048/">2048</a></h3></div>
-  <div class="card"><h3>__MACOSX (no direct HTML entry)</h3></div>
   <div class="card"><h3><a href="g/acegangster/">acegangster</a></h3></div>
   <div class="card"><h3><a href="g/adventurecapitalist/">adventurecapitalist</a></h3></div>
   <div class="card"><h3><a href="g/agario/">agario</a></h3></div>
-  <div class="card"><h3>airsmash (no direct HTML entry)</h3></div>
   <div class="card"><h3><a href="g/baldisbasics/">baldisbasics</a></h3></div>
   <div class="card"><h3><a href="g/basketball-random/">basketball-random</a></h3></div>
   <div class="card"><h3><a href="g/basketballio/">basketballio</a></h3></div>
@@ -182,6 +230,76 @@
         friction: 0.925,
         tension: 0.005,
         maxCursorMove: 100
+      });
+      
+      // Advanced text pressure effect using variable fonts
+      const heading = document.querySelector('header h1');
+      if (heading) {
+        let mouseX = 0, mouseY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          
+          const rect = heading.getBoundingClientRect();
+          const headingX = rect.left + rect.width / 2;
+          const headingY = rect.top + rect.height / 2;
+          
+          const distance = Math.sqrt(
+            Math.pow(mouseX - headingX, 2) + 
+            Math.pow(mouseY - headingY, 2)
+          );
+          
+          const maxDistance = 300;
+          const pressure = Math.max(0, 1 - (distance / maxDistance));
+          
+          const weight = 400 + pressure * 500;
+          const width = 75 + pressure * 25;
+          const scaleY = 0.9 + pressure * 0.15;
+          
+          heading.style.fontVariationSettings = `'wght' ${weight}, 'wdth' ${width}`;
+          heading.style.transform = `scaleY(${scaleY})`;
+        });
+      }
+      
+      // Border glow effect on cards and add fullscreen buttons
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        const link = card.querySelector('a');
+        if (link) {
+          const h3 = card.querySelector('h3');
+          const fullscreenBtn = document.createElement('button');
+          fullscreenBtn.className = 'fullscreen-btn';
+          fullscreenBtn.innerHTML = '⛶';
+          fullscreenBtn.title = 'Open in fullscreen';
+          
+          fullscreenBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const gameUrl = link.href;
+            const gameWindow = window.open(gameUrl, '_blank');
+            
+            if (gameWindow) {
+              gameWindow.addEventListener('load', () => {
+                if (gameWindow.document.documentElement.requestFullscreen) {
+                  gameWindow.document.documentElement.requestFullscreen().catch(() => {});
+                }
+              });
+            }
+          });
+          
+          h3.appendChild(fullscreenBtn);
+        }
+        
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width * 100;
+          const y = (e.clientY - rect.top) / rect.height * 100;
+          
+          card.style.setProperty('--mouse-x', x + '%');
+          card.style.setProperty('--mouse-y', y + '%');
+        });
       });
     });
   </script>
